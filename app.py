@@ -10,7 +10,7 @@ CORS(app)  # Enable CORS for mobile app access
 
 # Load the TensorFlow Lite model
 print("Loading TFLite model...")
-interpreter = tf.lite.Interpreter(model_path="medicinal_plant_classifier.tflite")
+interpreter = tf.lite.Interpreter(model_path=r"C:\Users\preml\Desktop\Flask-Plant_API\model.tflite")
 interpreter.allocate_tensors()
 print("TFLite model loaded successfully!")
 
