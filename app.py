@@ -5,7 +5,6 @@ from flask_cors import CORS
 import numpy as np
 import cv2
 
-
 model_path = r"C:\Users\preml\Desktop\Flask-Plant_API\model.tflite"
 if not os.path.exists(model_path):
     raise FileNotFoundError(f"Model file not found at: {model_path}")
@@ -16,7 +15,7 @@ CORS(app)  # Enable CORS for mobile app access
 
 # Load the TensorFlow Lite model
 print("Loading TFLite model...")
-interpreter = tf.lite.Interpreter(model_path="model.tflite")  
+interpreter = tf.lite.Interpreter(model_path=r"C:\Users\preml\Desktop\Flask-Plant_API\model.tflite")  
 interpreter.allocate_tensors()
 print("TFLite model loaded successfully!")
 
@@ -73,4 +72,6 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Use PORT from environment
+    app.run(host="0.0.0.0", port=port)
+
