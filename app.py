@@ -5,12 +5,18 @@ from flask_cors import CORS
 import numpy as np
 import cv2
 
+
+model_path = r"C:\Users\preml\Desktop\Flask-Plant_API\model.tflite"
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"Model file not found at: {model_path}")
+interpreter = tf.lite.Interpreter(model_path=model_path)
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for mobile app access
 
 # Load the TensorFlow Lite model
 print("Loading TFLite model...")
-interpreter = tf.lite.Interpreter(model_path=r"C:\Users\preml\Desktop\Flask-Plant_API\model.tflite")
+interpreter = tf.lite.Interpreter(model_path="model.tflite")  
 interpreter.allocate_tensors()
 print("TFLite model loaded successfully!")
 
