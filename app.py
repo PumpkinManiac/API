@@ -15,7 +15,7 @@ CORS(app)  # Enable CORS for mobile app access
 
 # Load the TensorFlow Lite model
 print("Loading TFLite model...")
-interpreter = tf.lite.Interpreter(model_path=r"C:\Users\preml\Desktop\Flask-Plant_API\model.tflite")  
+interpreter = tf.lite.Interpreter(model_path="model.tflite")  
 interpreter.allocate_tensors()
 print("TFLite model loaded successfully!")
 
@@ -72,6 +72,7 @@ def predict():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Use PORT from environment
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
 
